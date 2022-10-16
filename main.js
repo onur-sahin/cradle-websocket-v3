@@ -30,7 +30,7 @@ wss.on("connection", function (ws, req) {
 
   ws.on("message", (data) => {
 
-    broadcast(ws, currData, false);
+    broadcast(ws, data, false);
 
     // if (isJSON(data)) {
     //   const currData = JSON.parse(data);
