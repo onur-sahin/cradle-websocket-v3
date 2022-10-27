@@ -30,20 +30,20 @@ wss.on("connection", function (ws, req) {
 
   ws.on("message", (data) => {
 
-    // broadcast(ws, data, false);
+    broadcast(ws, data, false);
 
-    if (isJSON(data)) {
-      const currData = JSON.parse(data);
-      broadcast(ws, currData, false);
-    } else if(typeof currData === 'string') {
-      if(currData === 'pong') {
-        console.log('keepAlive');
-        return;
-      }
-      broadcast(ws, currData, false);
-    } else {
-      console.error('malformed message', data);
-    }
+    // if (isJSON(data)) {
+    //   const currData = JSON.parse(data);
+    //   broadcast(ws, currData, false);
+    // } else if(typeof currData === 'string') {
+    //   if(currData === 'pong') {
+    //     console.log('keepAlive');
+    //     return;
+    //   }
+    //   broadcast(ws, currData, false);
+    // } else {
+    //   console.error('malformed message', data);
+    // }
   });
 
   ws.on("close", (data) => {
